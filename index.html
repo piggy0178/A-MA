@@ -1,4 +1,4 @@
-html>
+<!DOCTYPE html>
 <html lang="zh-Hant">
 <head>
   <meta charset="UTF-8" />
@@ -6,7 +6,9 @@ html>
   <title>AAC Demo</title>
   <style>
     html, body {
-      margin: 0; height: 100vh; display: flex;
+      margin: 0;
+      height: 100vh;
+      display: flex;
       font-family: sans-serif;
     }
     .sidebar {
@@ -20,8 +22,14 @@ html>
       gap: 10px;
     }
     .sidebar img {
-      width: 100%; height: auto; object-fit: cover;
-      cursor: pointer; border: 2px solid transparent;
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      cursor: pointer;
+      border: 2px solid transparent;
+    }
+    .sidebar img:hover {
+      border-color: #888;
     }
     .main {
       width: 80%;
@@ -44,6 +52,7 @@ html>
       justify-content: center;
       gap: 10px;
       flex-wrap: wrap;
+      margin-top: 10px;
     }
     .buttons img {
       width: 80px;
@@ -55,23 +64,22 @@ html>
 </head>
 <body>
   <div class="sidebar" id="photoList"></div>
+
   <div class="main">
     <img id="mainPhoto" class="main-photo" src="abc/pho/a.jpg" alt="主圖" />
     <div class="buttons" id="soundButtons"></div>
   </div>
 
   <script>
-    const photos = ["a", "b", "c", "d", "e", "f"];
+    const photos = ["a", "b", "c", "d", "e", "f", "g"];
     const photoList = document.getElementById("photoList");
     const mainPhoto = document.getElementById("mainPhoto");
     const soundButtons = document.getElementById("soundButtons");
 
-    let currentAudio = null;  // 儲存目前播放的音檔物件
+    let currentAudio = null;
 
     photos.forEach(photo => {
       const img = document.createElement("img");
-
-      // 全部改成 .jpg
       img.src = `abc/pho/${photo}.jpg`;
       img.alt = photo;
 
@@ -84,7 +92,6 @@ html>
           btn.src = `abc/pic/${photo}${i}.jpg`;
           btn.alt = `${photo}${i}`;
           btn.onclick = () => {
-            // 如果有正在播放的音檔，先暫停並重設
             if (currentAudio) {
               currentAudio.pause();
               currentAudio.currentTime = 0;
@@ -99,7 +106,6 @@ html>
       photoList.appendChild(img);
     });
 
-    // 自動載入第一張
     window.onload = () => {
       document.querySelector(".sidebar img")?.click();
     };
