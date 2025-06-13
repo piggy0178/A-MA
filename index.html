@@ -11,6 +11,7 @@
       display: flex;
       font-family: sans-serif;
     }
+
     .sidebar {
       width: 20%;
       background: #f0f0f0;
@@ -21,6 +22,7 @@
       align-items: center;
       gap: 10px;
     }
+
     .sidebar img {
       width: 100%;
       height: auto;
@@ -28,9 +30,7 @@
       cursor: pointer;
       border: 2px solid transparent;
     }
-    .sidebar img:hover {
-      border-color: #888;
-    }
+
     .main {
       width: 80%;
       display: flex;
@@ -41,37 +41,42 @@
       padding: 10px;
       box-sizing: border-box;
     }
+
     .main-photo {
       width: 100%;
       height: 75vh;
       object-fit: contain;
     }
+
     .buttons {
       width: 100%;
       display: flex;
       justify-content: center;
       gap: 10px;
       flex-wrap: wrap;
-      margin-top: 10px;
     }
+
     .buttons img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
+      width: 100px;
+      height: 100px;
+      object-fit: contain; /* ✅ 不剪裁圖片 */
       cursor: pointer;
+      background-color: #fff;
+      border: 1px solid #ccc;
+      padding: 4px;
+      box-sizing: border-box;
     }
   </style>
 </head>
 <body>
   <div class="sidebar" id="photoList"></div>
-
   <div class="main">
     <img id="mainPhoto" class="main-photo" src="abc/pho/a.jpg" alt="主圖" />
     <div class="buttons" id="soundButtons"></div>
   </div>
 
   <script>
-    const photos = ["a", "b", "c", "d", "e", "f", "g"];
+    const photos = ["a", "b", "c", "d", "e", "f", "g"]; // 已加入 g
     const photoList = document.getElementById("photoList");
     const mainPhoto = document.getElementById("mainPhoto");
     const soundButtons = document.getElementById("soundButtons");
